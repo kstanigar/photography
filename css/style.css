@@ -79,6 +79,7 @@ ul {
 
 body {
   font-family: "Ruhl", sans-serif;
+  animation: opening 1s ease-in-out;
 }
 
 /*  NAV SECTION */
@@ -96,7 +97,7 @@ nav {
 }
 
 #logo {
-  flex: 2 1 10rem;
+  flex: 3 1 10rem;
   font-size: var(--header1);
   font-weight: 500;
 }
@@ -104,6 +105,12 @@ nav {
   display: flex;
   justify-content: space-between;
   flex: 1 1 10rem;
+}
+
+/* BURGER MENU Hidden until mobile size */
+.menu-check,
+.burger {
+  display: none;
 }
 
 .hero {
@@ -154,8 +161,105 @@ nav {
   left: -20%;
   z-index: -2;
   max-height: 75%;
+  transform: translateY(10%) rotateZ(-10deg) rotateX(90deg);
+  animation: plant-entrance 1.5s ease-in-out 0.5s forwards,
+    plant-shake 2.5s infinite ease alternate-reverse 2s;
+  transform-origin: bottom;
 }
 
 .plant2 {
   left: 40%;
+}
+
+/* Animations */
+
+@keyframes opening {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes plant-entrance {
+  from {
+    transform: translateY(10%) rotateZ(-10deg) rotateX(90deg);
+  }
+  to {
+    transform: translateY(0%) rotateZ(0deg) rotateX(0deg);
+  }
+}
+
+@keyframes plant-shake {
+  from {
+    transform: rotateZ(-1deg);
+  }
+
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+/* MEDIA QUERIES and BURGER ANIMATION */
+@media screen and (max-width: 842px) {
+  .burger {
+    position: relative;
+    display: block;
+  }
+  .burger span {
+    padding: 0.1rem 1rem;
+    background: var(--gray-text);
+    margin: 0.3rem 0rem;
+    display: block;
+  }
+
+  .nav-links {
+    background: var(--background-color);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.7s ease;
+  }
+
+  .nav-links a {
+    color: aliceblue;
+    font-size: var(--header4);
+    line-height: 5rem;
+    text-align: center;
+  }
+
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  .main-head {
+    position: relative;
+  }
+
+  .menu-check {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translate(2%, -50%);
+    width: 4rem;
+    height: 4rem;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 5;
+  }
+
+  .menu-check:checked + .nav-links {
+    transform: translate(-100%);
+  }
+
+  .menu-check:checked ~ .burger span {
+    background: aliceblue;
+  }
 }
