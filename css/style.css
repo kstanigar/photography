@@ -33,6 +33,7 @@ html {
   --background-color: #414141;
   --gray-text: #525252;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -121,7 +122,6 @@ nav ul li:hover {
 }
 
 /* BURGER MENU Hidden until mobile size */
-.menu-check,
 .burger {
   display: none;
 }
@@ -299,7 +299,7 @@ nav ul li:hover {
   min-height: 100vh;
   background-color: black;
   grid-template-columns: repeat(3, 1fr);
-  animation: flash 12s infinite ease-in-out;
+  animation: flash 8s infinite ease-in-out;
 }
 
 .gallery img {
@@ -311,13 +311,13 @@ nav ul li:hover {
 
 .gallery1 {
   grid-column: 1/3;
-  animation: move-3 12s infinite ease-in-out alternate-reverse;
+  animation: move-3 8s infinite ease-in-out alternate-reverse;
 }
 
 .gallery2 {
   grid-column: 3/4;
   grid-row: 1/3;
-  animation: move-2 12s infinite ease-in-out alternate-reverse;
+  animation: move-2 8s infinite ease-in-out alternate-reverse;
 }
 
 @keyframes flash {
@@ -460,7 +460,13 @@ footer ul li:hover {
   .burger {
     position: relative;
     display: block;
+    cursor: pointer;
   }
+
+  /* .burger:hover {
+    background-color: rgba(65, 65, 65, 0.9);
+    border-radius: 20%;
+  } */
   .burger span {
     padding: 0.1rem 1rem;
     background: var(--gray-text);
@@ -501,37 +507,22 @@ footer ul li:hover {
     position: relative;
   }
 
-  .menu-check {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 2%;
-    transform: translate(2%, -50%);
-    width: 4rem;
-    height: 4rem;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 3;
-  }
-
-  .menu-check:checked + .nav-links {
+  .nav-open {
     transform: translate(-100%);
   }
 
-  .menu-check:checked ~ .burger span {
+  .toggle .line1 {
+    transform: rotateZ(45deg) translateY(355%);
     background: aliceblue;
   }
 
-  .menu-check:checked ~ .burger span:nth-child(1) {
-    transform: rotateZ(45deg) translateY(355%);
-  }
-
-  .menu-check:checked ~ .burger span:nth-child(3) {
-    transform: rotateZ(-45deg) translateY(-355%);
-  }
-
-  .menu-check:checked ~ .burger span:nth-child(2) {
+  .toggle .line2 {
     opacity: 0;
+  }
+
+  .toggle .line3 {
+    transform: rotateZ(-45deg) translateY(-355%);
+    background: aliceblue;
   }
 
   /* HERO SECTION */
