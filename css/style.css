@@ -113,18 +113,23 @@ nav ul li:hover a{
   filter: brightness(1.1);
   text-shadow: none;
 }
+.list-item {
+  position: relative;
+}
 .cool-link::after {
   content: '';
-  display: block;
-  margin-left: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 0;
   height: 2px;
+  margin-left: 1.25rem;
   background: var(--special-color);
   transition: width .3s;
 }
 
 .cool-link:hover::after {
-  width: 100%;
+  width: 70%;
 }
 
 #logo {
